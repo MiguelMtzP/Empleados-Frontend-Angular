@@ -1,0 +1,49 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Detalle del Empleado</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <h4 class="col-md-4 col-md-offset-1">Nombre</h4>
+      <p class="col-md-5">{{empleado.nombre}} {{empleado.apellido}}</p>
+    </div>
+    <div class="row">
+      <h4 class="col-md-4 col-md-offset-1">E-mail</h4>
+      <p class="col-md-5">{{empleado.email}}</p>
+    </div>
+    <div class="row">
+      <h4 class="col-md-4 col-md-offset-1">Fecha de nacimiento</h4>
+      <p class="col-md-5">{{empleado.fechaNacimiento}}</p>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="alert alert-danger"  *ngIf="eliminar" role="alert">
+      <span class="text-danger"><strong>Atención </strong>¿Esta seguro que desea eliminar este empleado?</span>
+    </div>
+
+    <div *ngIf="!eliminar">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" (click)="eliminar=true" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" [routerLink]="['/']" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Atrás</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" [routerLink]="['/editarEmpleado',empleado._id]" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="eliminar">
+      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default" (click)="eliminar=false"><span class="glyphicon glyphicon-chevron-left"></span> Cancelar</button>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" [routerLink]="['/eliminarEmpleado',empleado._id]" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
